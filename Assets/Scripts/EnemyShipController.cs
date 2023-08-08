@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 enum shipDirection
@@ -13,8 +14,8 @@ enum shipDirection
 public class EnemyShipController : MonoBehaviour
 {
     public GameObject[] enemyShips;
-    public int spawnCount=4;
-    public int maxCustomTime=4;
+    public int spawnCount=4; // the spawn position could spawn quantity every time 
+    public int maxSpawnIntervalTime=4; //
     private float timer = 0;
     public float interval = 2f;
     [Header("ShotShipPosition")]
@@ -48,7 +49,7 @@ public class EnemyShipController : MonoBehaviour
                 SpawnShip();
             }
             timer = 0;
-            interval = Random.Range(0, maxCustomTime);
+            interval = Random.Range(0, maxSpawnIntervalTime);
         }
 
 
