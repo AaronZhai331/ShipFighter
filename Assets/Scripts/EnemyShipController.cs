@@ -15,9 +15,10 @@ public class EnemyShipController : MonoBehaviour
 {
     public GameObject[] enemyShips;
     public int spawnCount=4; // the spawn position could spawn quantity every time 
-    public int maxSpawnIntervalTime=4; //
+    public int maxSpawnIntervalTime=5; //
     private float timer = 0;
     public float interval = 2f;
+    private int wave = 1;
     [Header("ShotShipPosition")]
 //  we need to building four Empties objects in every direction
     public Transform[] leftTF;
@@ -51,7 +52,22 @@ public class EnemyShipController : MonoBehaviour
             timer = 0;
             interval = Random.Range(0, maxSpawnIntervalTime);
         }
+//control wave change
+        if (GameManager.Instance.score > 20*wave)
+        {
+            wave++;
+            spawnCount++;
 
+            if (maxSpawnIntervalTime <= 3)
+            {
+                maxSpawnIntervalTime = 3;
+            }
+            else
+            {
+                maxSpawnIntervalTime--;
+            }
+            
+        }
 
     }
 /// <summary>
