@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public Camera Camera;
 
+    public PlayerWeapon Weapon;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,11 @@ public class PlayerController : MonoBehaviour
 
         MousePosition = Camera.ScreenToWorldPoint(Input.mousePosition);
 
+
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            Weapon.Shoot();
+        }
     }
 
     void Move()
