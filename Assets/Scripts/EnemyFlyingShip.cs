@@ -17,8 +17,24 @@ public class EnemyFlyingShip : MonoBehaviour
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
         //make the ship face the targetPosition
-        transform.LookAt(this.BPos);
+        //this.transform.LookAt(this.BPos,transform.forward);
         flyingSpeed = Random.Range(2, maxFlyingSpeed);
+        
+        
+    }
+
+    private void Start()
+    {
+        Vector3 direction = (BPos.position - transform.position).normalized;
+        //Debug.Log(transform.up);
+        float angle = Vector3.Angle(transform.up, direction);
+        Vector3 crossProduct = Vector3.Cross(transform.up, direction);
+        if (crossProduct.z < 0)
+        {
+            angle = -angle;
+        }
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        //transform.LookAt(BPos.position,transform.up);
     }
 
     /// <summary>

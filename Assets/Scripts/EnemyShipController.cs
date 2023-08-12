@@ -77,7 +77,7 @@ public class EnemyShipController : MonoBehaviour
     {
         int randomIndex = Random.Range(0, enemyShips.Length);
         FlyingShip();
-        //todo get the initial position of spawned ship
+
         GameObject go = Instantiate(enemyShips[randomIndex],APos.position,Quaternion.identity);
         go.name = enemyShips[randomIndex].name;
         go.AddComponent<EnemyFlyingShip>();
@@ -96,6 +96,7 @@ public class EnemyShipController : MonoBehaviour
         {
             case shipDirection.Horizontal:
                 setABPos(leftTF, rightTF);
+                
                 break;
             case shipDirection.Vertical:
                 setABPos(topTF, bottomTF);
