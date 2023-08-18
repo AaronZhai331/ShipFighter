@@ -27,24 +27,24 @@ public class CameraController : MonoBehaviour
         position = playerShip.transform.position;
         XAxis = position.x;
         YAxis = position.y;
-        if (position.y >= 2.65f)
+        if (position.y >= 1.38f)
         {
-            YAxis = 2.65f;
+            YAxis = 1.38f;
         }
 
-        if (position.y <= -2.65f)
+        if (position.y <= -1.38f)
         {
-            YAxis = -2.65f;
+            YAxis = -1.38f;
         }
 
-        if (position.x <= -4.7f)
+        if (position.x <= -2.45f)
         {
-            XAxis = -4.7f;
+            XAxis = -2.45f;
         }
 
-        if (position.x >= 4.7f)
+        if (position.x >= 2.45f)
         {
-            XAxis = 4.7f;
+            XAxis = 2.45f;
         }
 
         this.transform.position = new Vector3(XAxis, YAxis, -5);

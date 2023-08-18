@@ -29,13 +29,13 @@ public class BonusManager : MonoBehaviour
         {
             if (isSpeedBonus)
             {
-                Debug.Log("bonus");
+                
                 SpeedBonusSpawn();
             }
 
             else if (isHealBonus)
             {
-                Debug.Log("bonus");
+                
                 HealBonusSpawn();
             }
             nextTime = Time.time + 5;

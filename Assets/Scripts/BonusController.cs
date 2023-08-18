@@ -13,7 +13,7 @@ public class BonusController : MonoBehaviour
         {
             if (this.CompareTag("HealthTag"))
             {
-                other.GetComponent<PlayerController>().health += 20;
+                other.GetComponent<PlayerController>().health += 10;
             }
             if (this.CompareTag("SpeedTag"))
             {
