@@ -6,24 +6,25 @@ public class BonusManager : MonoBehaviour
 {
     public bool isSpeedBonus = false;
     public bool isHealBonus = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float nextTime = 10;
 
     // Update is called once per frame
     void Update()
     {
-        if (isSpeedBonus)
+        if (Time.time > nextTime)
         {
-            SpeedBonus();
+            if (isSpeedBonus)
+            {
+                SpeedBonus();
+            }
+
+            else if (isHealBonus)
+            {
+                HealBonus();
+            }
+            nextTime = Time.time + 5;
         }
 
-        else if (isHealBonus)
-        {
-            HealBonus();
-        }
     }
     void SpeedBonus()
     {
