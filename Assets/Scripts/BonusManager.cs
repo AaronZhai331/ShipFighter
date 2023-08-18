@@ -11,6 +11,7 @@ public class BonusManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //spawn bonus after 5 seconds
         if (Time.time > nextTime)
         {
             if (isSpeedBonus)
@@ -28,33 +29,26 @@ public class BonusManager : MonoBehaviour
     }
     void SpeedBonus()
     {
-        
+        RandomSpawnBonus();
     }
     void HealBonus()
     {
-        
+        RandomSpawnBonus();
     }
     void RandomSpawnBonus()
     {
-        
-        Transform childTF;
         for (int i = 0; i < transform.childCount; i++)
         {
-            childTF = transform.GetChild(i);
-            SpriteRenderer childSpriteRenderer=childTF.GetComponent<SpriteRenderer>();
-            if (childSpriteRenderer.enabled == false)
+            var childGameObject = transform.GetChild(i).GetComponent<GameObject>();
+            if (childGameObject.activeSelf==false)
             {
                 int isSpawn = Random.Range(0, 2);
                 if (isSpawn == 1)
                 {
-                    childSpriteRenderer.enabled = true;
-                    childTF.GetComponent<BoxCollider2D>().enabled = true;
+                    childGameObject.SetActive(true);
                 }
             }
         }
     }
-    void CountTime()
-    {
-        
-    }
+
 }
