@@ -26,5 +26,12 @@ public class EnemyHitDetector : MonoBehaviour
             this.gameManager.UpdateScore(1);
         }
 
+        if (c.CompareTag("Player"))
+        {
+            
+            c.GetComponent<PlayerController>().health -= 5;
+            Destroy(gameObject);
+        }
+
     }
 }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 80;
 
-
+    public int health=100;
     private Vector2 MoveDirection;
 
 
@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health = health > 100 ? 100:health;
+        health=health<0?0:health;
         ProcessInputs();
         LimitPositionInBound();
     }

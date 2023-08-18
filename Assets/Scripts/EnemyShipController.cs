@@ -124,7 +124,10 @@ public class EnemyShipController : MonoBehaviour
             BPos = A[Random.Range(0, A.Length)];
         }
     }
-//create ships after specific time
+
+
+
+    //create ships after specific time
     IEnumerator RandomSpawn(int customTime)
     {
         yield return new WaitForSeconds(customTime);

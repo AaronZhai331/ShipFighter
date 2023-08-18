@@ -11,7 +11,23 @@ public class BonusController : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            TriggerBonus?.Invoke();
+            if (this.CompareTag("HealthTag"))
+            {
+                other.GetComponent<PlayerController>().health += 20;
+            }
+            if (this.CompareTag("SpeedTag"))
+            {
+                other.GetComponent<PlayerController>().moveSpeed += 40;
+                StartCoroutine(SetSpeedNormal(other));
+
+            }
+            this.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator SetSpeedNormal(Collider2D other)
+    {
+        yield return new WaitForSeconds(7);
+        other.GetComponent<PlayerController>().moveSpeed = 80;
     }
 }

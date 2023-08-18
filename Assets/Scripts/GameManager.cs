@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,8 +9,9 @@ public class GameManager : MonoBehaviour
     public int score = 0;
 
     public int currentWave = 1;
-
+    public PlayerController plyaerController;
     private static GameManager _instance;
+    public GameObject panel;
 
     public static GameManager Instance
     {
@@ -25,6 +28,15 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (plyaerController.health <= 0)
+        {
+            Time.timeScale = 0;
+            panel.SetActive(true);
         }
     }
 
