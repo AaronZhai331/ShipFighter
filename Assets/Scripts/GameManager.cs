@@ -29,4 +29,15 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void UpdateScore(int increment)
+    {
+        this.score += increment;
+
+        if (score >= 6)  
+        {
+            
+        }
+    }
+
+
 }
