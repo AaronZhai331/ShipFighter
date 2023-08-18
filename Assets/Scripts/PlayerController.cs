@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
 
-    public float MoveSpeed = 7;
+    public float moveSpeed = 80;
 
 
     private Vector2 MoveDirection;
@@ -64,13 +65,16 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        RB.velocity = new Vector2(MoveDirection.x * MoveSpeed, MoveDirection.y * MoveSpeed );
+        RB.velocity = new Vector2(MoveDirection.x * moveSpeed*Time.deltaTime, MoveDirection.y * moveSpeed*Time.deltaTime );
 
         Vector2 aimDirection = MousePosition - RB.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90F;
         RB.rotation = aimAngle;
 
     }
+    /// <summary>
+    /// Limit the player ship not out background image bound
+    /// </summary>
     void LimitPositionInBound()
     {
         position = transform.position;
@@ -99,6 +103,21 @@ public class PlayerController : MonoBehaviour
 
         var currentWorldPoint = _camera.ViewportToWorldPoint(new Vector2(XAxis, YAxis));
         transform.position = new Vector3(currentWorldPoint.x, currentWorldPoint.y, 0);
+    }
+    void HealBonus()
+    {
+        
+    }
+    void SpeedBonus()
+    {
+        StartCoroutine("TimeLimitSpeedBonus");
+    }
+
+    IEnumerator TimeLimitSpeedBonus()
+    {
+        moveSpeed += 10;
+        yield return new WaitForSeconds(5);
+        moveSpeed -= 10;
     }
 
 }
