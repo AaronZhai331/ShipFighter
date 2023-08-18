@@ -104,20 +104,6 @@ public class PlayerController : MonoBehaviour
         var currentWorldPoint = _camera.ViewportToWorldPoint(new Vector2(XAxis, YAxis));
         transform.position = new Vector3(currentWorldPoint.x, currentWorldPoint.y, 0);
     }
-    void HealBonus()
-    {
-        
-    }
-    void SpeedBonus()
-    {
-        StartCoroutine("TimeLimitSpeedBonus");
-    }
 
-    IEnumerator TimeLimitSpeedBonus()
-    {
-        moveSpeed += 10;
-        yield return new WaitForSeconds(5);
-        moveSpeed -= 10;
-    }
 
 }
