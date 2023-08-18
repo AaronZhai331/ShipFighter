@@ -33,6 +33,7 @@ public class EnemyShipController : MonoBehaviour
 
     private void Start()
     {
+        
         for (int i = 0; i < spawnCount; i++)
         {
             SpawnShip();
@@ -42,6 +43,8 @@ public class EnemyShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        wave = GameManager.Instance.currentWave;
+        
         timer += Time.deltaTime;
         if (timer >= interval)
         {
@@ -53,11 +56,11 @@ public class EnemyShipController : MonoBehaviour
             interval = Random.Range(0, maxSpawnIntervalTime);
         }
 //control wave change
-        if (GameManager.Instance.score > 20*wave)
+        if (GameManager.Instance.score >= 20*wave)
         {
-            wave++;
-            spawnCount++;
-
+  
+            ++spawnCount;
+            ++GameManager.Instance.currentWave;
             if (maxSpawnIntervalTime <= 3)
             {
                 maxSpawnIntervalTime = 3;
